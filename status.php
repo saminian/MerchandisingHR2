@@ -1,21 +1,10 @@
-<?php
-include 'connect.php';
-
-$id = $_GET['id'];
-  $query = "SELECT * FROM adtask WHERE id='$id'";
-  $data = mysqli_query($con,$query);
-  
-  $result = mysqli_fetch_assoc($data);
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Schedule</title>
+    <title>Employee Trainee Status</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style1.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -77,65 +66,64 @@ $id = $_GET['id'];
                 <a href="status.php" class="text-black">
                     <h3><i class="fas fa-user-check"></i>Employee Trainee Status</h3>
                 </a>
-    </div>
-    <div class="main-content">
-<div class="container"><br>
-           <a href="task.php"><span class="close1">x</span></a>
-            <h2>Update Assign Task and Schedule</h2>
-            <form action="#" method="post">
-                <input type="text" name="name" value="<?php echo $result['name'];?>" readonly><br>
-                <input type="text" name="depart" value="<?php echo $result['depart'];?>" readonly><br>
-                <input type="email" name="email" value="<?php echo $result['email'];?>" readonly>
-
-                <label for="task">Select Training:</label><br>
-                <select id="task" name="task" style="width: 430px;" required>
-                    o
-                    <option value="<?php echo $result['task'];?>" disabled selected><?php echo $result['task'];?></option>
-                    <option value="Typing test">Typing test</option>
-                    <option value="24 personality test">24-Personality test</option>
-                    <option value="Task 3">Task 3</option>
-                    <option value="Task 4">Task 4</option>
-                    <option value="Task 5">Task 5</option>
-                </select>
-                <input type="date" id="date" name="date" value="<?php echo $result['date'];?>" required>
-                <input type="time" id="time" name="time" value="<?php echo $result['time'];?>" required>
-                <button class="button button2" style="width: 87%; margin-left: 30px;" name="submit">Update Assign Training</button>
-            </form>
-    </div>
-    <div id="successModal" class="custom-modal">
-    <div class="custom-modal-content">
-        <span class="close" onclick="closeSuccessModal()">&times;</span>
-        <h2>Schedule Update Successful!</h2>
-        <p> Schedule has been updated.</p>
-        <button onclick="redirectToTasks()" class="btn">OK</button>
-    </div>
-</div>
-    <?php
-    include 'connect.php';
-
-    if(isset($_POST['submit'])) {
-        $name = $_POST['name'];
-        $depart = $_POST['depart'];
-        $email = $_POST['email'];
-        $task = $_POST['task'];
-        $date = $_POST['date'];
-        $time =$_POST['time'];
-
-        $update = "UPDATE adtask SET name='$name',depart='$depart', email='$email', task='$task',date='$date',time='$time' where id='$id'";
-    $up = mysqli_query($con,$update);
-    if(!$up) {
-        die('wrong');
-    }
-    else {
-        echo "<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('successModal').style.display = 'block';
-        });
-    </script>";
-    }    
-    
-   }
-    ?>
+            </div>
+                
+            <div class="main-content">
+                <h2>Employee trainee Status</h2>
+                <div class="status-container">
+                    <button class="add-status" onclick="openModal()">Add Status</button>
+                    <h2>Employee trainee Status</h2>
+                    <table class="statusTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Position</th>
+                                <th>Training/Evaluation</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="statusTable">
+                            <!-- Rows will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Add Status Modal -->
+                <div class="modal" id="addStatusModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Add Status</h3>
+                        </div>
+                        <div class="modal-body">
+                            <label>Status Name:</label>
+                            <input type="text" id="statusName" required><br><br>
+                            
+                            <label>Department:</label>
+                            <input type="text" id="department" required><br><br>
+                            
+                            <label>Position:</label>
+                            <input type="text" id="position" required><br><br>
+                            
+                            <label>Training/Evaluation:</label>
+                            <select id="training" required>
+                                <option value="Training in Progress">Training in Progress</option>
+                                <option value="Evaluation Pending">Evaluation Pending</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                            
+                            <label>Status:</label>
+                            <select id="status" required>
+                                <option value="Ongoing">Ongoing</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="close-btn" onclick="closeModal()">Close</button>
+                            <button class="save-btn" onclick="addStatus()">Save</button>
+                        </div>
+                    </div>
+                </div>
 
 <script src="js/script.js"></script>
 </body>

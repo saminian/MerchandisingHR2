@@ -55,14 +55,14 @@ input {
     width: 90%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffbd08;
     border-radius: 5px;
 }
 
 button {
     width: 90%;
     padding: 10px;
-    background:#ddb70e;
+    background:radial-gradient(circle at 10% 20%, rgb(228, 118, 0) 0%, rgb(247, 189, 2) 90%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background: #ddb70e;
+    background:radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
 }
 
 .error {

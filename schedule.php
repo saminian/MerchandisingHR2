@@ -64,21 +64,21 @@ if(isset($_POST['submit'])) {
                 <a href="schedule.php" class="text-black">
                     <h3><i class="fas fa-calendar-alt"></i> Training Schedule</h3>
                 </a>
-                <a href="assessment.html" class="text-black">
+                <a href="assessment.php" class="text-black">
                     <h3><i class="fas fa-file-alt"></i> Training Assessment</h3>
                 </a></br>
                 <h2>Performance Management</h2>
                 <hr class="border-color border-bottom seperator">
-                <a href="attendancestat.html" class="text-black">
+                <a href="attendancestat.php" class="text-black">
                     <h3><i class="fas fa-users"></i> Attendance Statistics</h3>
                 </a>
-                <a href="performancestats.html" class="text-black">
+                <a href="performancestats.php" class="text-black">
                     <h3><i class="fas fa-chart-line"></i> Performance Statistics</h3>
                 </a>
-                <a href="evaluation.html" class="text-black">
+                <a href="evaluation.php" class="text-black">
                     <h3><i class="fas fa-star"></i> Performance Evaluation</h3>
                 </a>
-                <a href="status.html" class="text-black">
+                <a href="status.php" class="text-black">
                     <h3><i class="fas fa-user-check"></i>Employee Trainee Status</h3>
                 </a>
     </div>
