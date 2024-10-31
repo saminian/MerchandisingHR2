@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2024 at 03:09 PM
+-- Generation Time: Oct 30, 2024 at 08:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `password`) VALUES
+(3, 'admin', '$2a$12$3KEeTzc1OQTMp46ICyjLEufr62fLd0.7w1/1T/jiOAcD5yqJOFzdi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `adtask`
 --
 
@@ -36,13 +55,6 @@ CREATE TABLE `adtask` (
   `date` date NOT NULL,
   `time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `adtask`
---
-
-INSERT INTO `adtask` (`id`, `name`, `depart`, `email`, `task`, `date`, `time`) VALUES
-(12, 'jeffrey', 'bsad', 'j@gmail.com', 'Task 4', '2024-10-10', '08:59:00');
 
 -- --------------------------------------------------------
 
@@ -62,11 +74,17 @@ CREATE TABLE `train` (
 --
 
 INSERT INTO `train` (`id`, `emname`, `depart`, `email`) VALUES
-(20, 'jeffrey', 'bsad', 'j@gmail.com');
+(46, 'catherine saminian', 'it department', 'catherinesaminian9@gmail.com');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `adtask`
@@ -85,16 +103,22 @@ ALTER TABLE `train`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `adtask`
 --
 ALTER TABLE `adtask`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `train`
 --
 ALTER TABLE `train`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
